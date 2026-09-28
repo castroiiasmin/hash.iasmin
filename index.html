@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Projeto educativo sobre funções de hash e colisões."
+    >
+
+    <title>Hash.Iasmin | Desafio de Hash</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="header">
+
+        <div class="container header-content">
+
+            <div class="logo">
+                <span class="logo-icon">#</span>
+                <span>hash.iasmin</span>
+            </div>
+
+            <span class="badge">DESAFIO DE HASH</span>
+
+        </div>
+
+    </header>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main>
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <div class="container hero-content">
+
+                <div class="hero-text">
+
+                    <span class="tag">
+                        🔐 SEGURANÇA DIGITAL
+                    </span>
+
+                    <h1>
+                        Entendendo
+                        <span>Hash</span>
+                    </h1>
+
+                    <p>
+                        Descubra como uma palavra pode ser transformada
+                        em um número e como palavras diferentes podem
+                        gerar exatamente o mesmo valor.
+                    </p>
+
+                    <a href="#calculadora" class="hero-button">
+                        Começar desafio ↓
+                    </a>
+
+                </div>
+
+                <div class="hero-card">
+
+                    <div class="code-header">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <div class="code-content">
+
+                        <p>
+                            <span class="keyword">def</span>
+                            <span class="function">calcula_hash</span>
+                            <span>(senha):</span>
+                        </p>
+
+                        <p class="indent">
+                            valor = <span class="number">0</span>
+                        </p>
+
+                        <p class="indent">
+                            <span class="keyword">for</span>
+                            letra
+                            <span class="keyword">in</span>
+                            senha:
+                        </p>
+
+                        <p class="double-indent">
+                            valor +=
+                            <span class="function">ord</span>(letra)
+                        </p>
+
+                        <p class="indent">
+                            <span class="keyword">return</span> valor
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- EXPLICAÇÃO -->
+        <section class="explanation">
+
+            <div class="container">
+
+                <div class="section-title">
+
+                    <span class="tag">COMO FUNCIONA?</span>
+
+                    <h2>
+                        Uma função simples,
+                        <span>um conceito importante.</span>
+                    </h2>
+
+                    <p>
+                        Nesta atividade, usamos a soma dos valores ASCII
+                        de cada caractere para criar um valor de hash.
+                    </p>
+
+                </div>
+
+
+                <div class="steps">
+
+                    <div class="step-card">
+
+                        <div class="step-number">01</div>
+
+                        <h3>Digite uma palavra</h3>
+
+                        <p>
+                            Escolha uma palavra com pelo menos duas letras.
+                        </p>
+
+                    </div>
+
+
+                    <div class="step-card">
+
+                        <div class="step-number">02</div>
+
+                        <h3>Calculamos o hash</h3>
+
+                        <p>
+                            Cada caractere é convertido para seu valor ASCII
+                            e os valores são somados.
+                        </p>
+
+                    </div>
+
+
+                    <div class="step-card">
+
+                        <div class="step-number">03</div>
+
+                        <h3>Encontramos uma colisão</h3>
+
+                        <p>
+                            Procuramos duas palavras diferentes que produzam
+                            o mesmo valor.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CALCULADORA -->
+        <section class="calculator-section" id="calculadora">
+
+            <div class="container">
+
+                <div class="section-title center">
+
+                    <span class="tag">LABORATÓRIO</span>
+
+                    <h2>
+                        Teste sua própria
+                        <span>palavra</span>
+                    </h2>
+
+                    <p>
+                        Veja exatamente como o hash é calculado.
+                    </p>
+
+                </div>
+
+
+                <div class="calculator-card">
+
+                    <label for="palavra">
+                        Digite uma palavra
+                    </label>
+
+                    <div class="input-area">
+
+                        <input
+                            type="text"
+                            id="palavra"
+                            placeholder="Exemplo: ola"
+                            autocomplete="off"
+                        >
+
+                        <button onclick="calcularHash()">
+                            Calcular Hash
+                        </button>
+
+                    </div>
+
+                    <p class="input-help">
+                        Use pelo menos duas letras.
+                    </p>
+
+
+                    <!-- RESULTADO -->
+                    <div
+                        id="resultado"
+                        class="result-box hidden"
+                    >
+
+                        <div class="result-header">
+                            <span>RESULTADO</span>
+                            <span class="check">✓</span>
+                        </div>
+
+                        <div class="hash-result">
+
+                            <span class="result-label">
+                                Valor do hash
+                            </span>
+
+                            <strong id="valorHash">
+                                0
+                            </strong>
+
+                        </div>
+
+                        <div class="ascii-area">
+
+                            <h3>
+                                Cálculo dos caracteres
+                            </h3>
+
+                            <div id="asciiList"></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- COLISÃO -->
+        <section class="collision-section">
+
+            <div class="container">
+
+                <div class="section-title center">
+
+                    <span class="tag">DESAFIO</span>
+
+                    <h2>
+                        Encontre uma
+                        <span>colisão de hash</span>
+                    </h2>
+
+                    <p>
+                        Clique no botão e deixe o sistema procurar
+                        duas palavras diferentes com o mesmo hash.
+                    </p>
+
+                </div>
+
+
+                <div class="collision-card">
+
+                    <div class="collision-icon">
+                        ⚡
+                    </div>
+
+                    <h3>
+                        Duas palavras.
+                        <br>
+                        Um mesmo hash.
+                    </h3>
+
+                    <p>
+                        Isso acontece porque nossa função simplesmente
+                        soma os valores ASCII dos caracteres.
+                    </p>
+
+                    <button
+                        class="collision-button"
+                        onclick="encontrarColisao()"
+                    >
+                        🔎 Encontrar colisão
+                    </button>
+
+
+                    <!-- RESULTADO DA COLISÃO -->
+                    <div
+                        id="colisao"
+                        class="collision-result hidden"
+                    >
+
+                        <div class="success-title">
+                            ✓ COLISÃO ENCONTRADA!
+                        </div>
+
+                        <div class="words-container">
+
+                            <div class="word-card">
+
+                                <span>PALAVRA 1</span>
+
+                                <strong id="palavra1">
+                                    -
+                                </strong>
+
+                                <small>
+                                    Hash:
+                                    <b id="hash1">-</b>
+                                </small>
+
+                            </div>
+
+
+                            <div class="equals">
+                                =
+                            </div>
+
+
+                            <div class="word-card">
+
+                                <span>PALAVRA 2</span>
+
+                                <strong id="palavra2">
+                                    -
+                                </strong>
+
+                                <small>
+                                    Hash:
+                                    <b id="hash2">-</b>
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="collision-message">
+
+                            <strong>
+                                O que aconteceu?
+                            </strong>
+
+                            <p>
+                                As palavras são diferentes, mas a soma
+                                dos valores ASCII dos seus caracteres
+                                resulta no mesmo número.
+                            </p>
+
+                            <div class="final-hash">
+                                Hash =
+                                <strong id="hashColisao">
+                                    0
+                                </strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- EXPLICAÇÃO FINAL -->
+        <section class="conclusion">
+
+            <div class="container">
+
+                <div class="conclusion-card">
+
+                    <div class="conclusion-icon">
+                        🔐
+                    </div>
+
+                    <div>
+
+                        <span class="tag">
+                            CONCLUSÃO
+                        </span>
+
+                        <h2>
+                            Nem todo hash simples é seguro.
+                        </h2>
+
+                        <p>
+                            Este exemplo é educativo. Como ele apenas
+                            soma valores ASCII, diferentes palavras
+                            podem produzir o mesmo resultado.
+                        </p>
+
+                        <p>
+                            Algoritmos de hash utilizados em aplicações
+                            reais são muito mais complexos e possuem
+                            propriedades de segurança específicas.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+    <footer>
+
+        <div class="container footer-content">
+
+            <div class="logo">
+                <span class="logo-icon">#</span>
+                <span>hash.iasmin</span>
+            </div>
+
+            <p>
+                Projeto educativo • Segurança Digital
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
